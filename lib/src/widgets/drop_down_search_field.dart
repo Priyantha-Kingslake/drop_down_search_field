@@ -1031,10 +1031,10 @@ class _DropDownSearchFieldState<T> extends State<DropDownSearchField<T>>
                 ),
               ),
             )
-          : Align(
-              alignment: Alignment.topLeft,
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: w),
+          : SizedBox(
+              width: w,
+              child: PointerInterceptor(
+                intercepting: widget.intercepting,
                 child: compositedFollower,
               ),
             );
