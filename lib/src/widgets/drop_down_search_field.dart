@@ -1004,7 +1004,10 @@ class _DropDownSearchFieldState<T> extends State<DropDownSearchField<T>>
                   }
                 }
               },
-              child: suggestionsList,
+              child: PointerInterceptor(
+                intercepting: widget.intercepting,
+                child: suggestionsList,
+              ),
             ),
           ),
         ),
@@ -1028,9 +1031,12 @@ class _DropDownSearchFieldState<T> extends State<DropDownSearchField<T>>
                 ),
               ),
             )
-          : Positioned(
-              width: w,
-              child: compositedFollower,
+          : Align(
+              alignment: Alignment.topLeft,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: w),
+                child: compositedFollower,
+              ),
             );
     });
   }
